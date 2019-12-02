@@ -16,7 +16,11 @@ class TodoForm extends Component {
     handleSubmit=(e)=>{
         e.preventDefault();
         const parent = this.props.parent
-        parent.setState({todos:this.state.value})
+        parent.setState(prevState => ({
+            todos:[
+                ...prevState.todos,this.state.value
+            ]
+        }))
         this.setState({
             value:''
         })
@@ -27,7 +31,8 @@ class TodoForm extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <input placeholder='Enter a Todo' 
                         value={this.state.value}   
-                        onChange={this.handleChange}/>
+                        onChange={this.handleChange}
+                        required/>
                         <input value='Add Todo' type='submit'/>
                 </form>
             </div>
