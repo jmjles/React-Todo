@@ -34,6 +34,7 @@ function Todo({parent}) {
                 return todo
             })
         })
+        alert('Checked!')
     }
     const deleteMe = e => {
         parent.setState({
