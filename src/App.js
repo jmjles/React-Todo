@@ -12,8 +12,8 @@ class App extends React.Component {
   render() {
     return (
       <Container>
-        <TodoList todos={this.state.todos}/>
         <TodoForm parent={this}/>
+        <TodoList parent={this}/>
       </Container>
     );
   }

@@ -2,10 +2,10 @@ import React from 'react'
 import Todo from './Todo'
 import { Container } from '@material-ui/core'
 
-function TodoList({todos}){
+function TodoList({parent}){
     return(
         <Container>
-            <Todo todos={todos}/>
+            <Todo parent={parent}/>
         </Container>
     )
 }

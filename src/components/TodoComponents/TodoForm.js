@@ -1,25 +1,25 @@
 import React, { Component } from 'react'
-
+import { Container,Input,Button } from '@material-ui/core';
+const id = require('uniqid');
 class TodoForm extends Component {
-    constructor(props){
-        super(props);
-        this.state={
+    state={
             value:''
-        }
-
     }
-    handleChange=el=>{
+    handleChange= el =>{
         this.setState({
             value:el.target.value
         })
     }
-    handleSubmit=(e)=>{
+    handleSubmit= e =>{
         e.preventDefault();
         const parent = this.props.parent
         parent.setState(prevState => ({
-            todos:[
-                ...prevState.todos,this.state.value
-            ]
+            todos:[...prevState.todos,
+                {
+                task:this.state.value,
+                status: 'incomplete',
+                id:id()
+            }]
         }))
         this.setState({
             value:''
@@ -27,15 +27,17 @@ class TodoForm extends Component {
     }
     render() {
         return (
-            <div>
+            <Container align='center'>
                 <form onSubmit={this.handleSubmit}>
-                    <input placeholder='Enter a Todo' 
+                    <Input placeholder='Enter a Todo' 
                         value={this.state.value}   
                         onChange={this.handleChange}
-                        required/>
-                        <input value='Add Todo' type='submit'/>
+                        required
+                        autoFocus
+                        />
+                        <Button type='submit' variant='outlined'>Add Todo</Button>
                 </form>
-            </div>
+            </Container>
         )
     }
 }
